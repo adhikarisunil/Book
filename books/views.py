@@ -13,7 +13,7 @@ class BookViewSet(viewsets.ModelViewSet):
     serializer_class = BookSerializer
     permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
-    filterset_fields = ['author']
+    filterset_fields = ['author', 'title']
 
 class  NobelViewSet(viewsets.ModelViewSet):
     queryset = Nobel.objects.all()
