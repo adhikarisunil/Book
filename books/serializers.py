@@ -8,6 +8,21 @@ class BookSerializer(serializers.ModelSerializer):
         model = Book
         fields = '__all__'
 
+    def validate_title(self, value):
+        # Add your custom validation logic for the title field here.
+        # For example, you can check for a specific pattern or length.
+        if len(value) < 5:
+            raise serializers.ValidationError("Title must be at least 5 characters long.")
+        return value
+    
+    def validate_publication_date(self, value):
+        # Add your custom validation logic for the publication_date field here.
+        # For example, you can check if the date is in the past or not.
+        from datetime import date
+        if value > date.today():
+            raise serializers.ValidationError("Publication date cannot be in the future.")
+        return value
+
 class NobelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Nobel

@@ -12,6 +12,7 @@ class Book(models.Model):
 
 class Nobel(models.Model):
     title = models.CharField(max_length=250)
+    author = models.CharField(max_length=100)
     description = models.CharField(max_length=500)
 
     def __str__(self):
@@ -19,5 +20,5 @@ class Nobel(models.Model):
 
 class Poem(models.Model):
     title = models.CharField(max_length=50)
-    poet_name = models.CharField(max_length=100)
+    author = models.CharField(max_length=100)
     type = models.TextField()
