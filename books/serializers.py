@@ -1,7 +1,7 @@
 # books/serializers.py
 
 from rest_framework import serializers
-from .models import Book, Nobel
+from .models import Book, Nobel, Poem
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:
@@ -11,4 +11,9 @@ class BookSerializer(serializers.ModelSerializer):
 class NobelSerializer(serializers.ModelSerializer):
     class Meta:
         model = Nobel
+        fields = '__all__'
+
+class PoemSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Poem
         fields = '__all__'
