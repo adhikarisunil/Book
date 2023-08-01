@@ -1,5 +1,3 @@
-# books/views.py
-
 from rest_framework import viewsets
 from .models import Book, Nobel, Poem
 from .serializers import BookSerializer, NobelSerializer, PoemSerializer
@@ -8,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from django_filters.rest_framework import DjangoFilterBackend
+from rest_framework import filters
 
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
