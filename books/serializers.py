@@ -5,15 +5,15 @@ from django.contrib.auth.models import User
 
 class UserProfileSerializer(serializers.ModelSerializer):
     class Meta:
-        model = UserProfile
-        fields = ('bio')
+        model = User
+        fields = '__all__'
 
 class PostSerializer(serializers.ModelSerializer):
     author = UserProfileSerializer(read_only=True)
 
     class Meta:
         model = Post
-        fields = ('id', 'title', 'content', 'author', 'created_at')
+        fields = '__all__'
 
 
 
