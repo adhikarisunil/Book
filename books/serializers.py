@@ -1,5 +1,21 @@
 from rest_framework import serializers
-from .models import Book, Nobel, Poem
+from .models import Book, Nobel, Poem, UserProfile, Post
+from django.contrib.auth.models import User
+
+
+class UserProfileSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = UserProfile
+        fields = ('bio')
+
+class PostSerializer(serializers.ModelSerializer):
+    author = UserProfileSerializer(read_only=True)
+
+    class Meta:
+        model = Post
+        fields = ('id', 'title', 'content', 'author', 'created_at')
+
+
 
 class BookSerializer(serializers.ModelSerializer):
     class Meta:

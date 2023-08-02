@@ -20,7 +20,7 @@ from django.contrib import admin
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
 from rest_framework_simplejwt.views import TokenRefreshView
-from books.views import BookViewSet, NobelViewSet, PoemViewSet, CustomTokenObtainPairView
+from books.views import  BookViewSet, NobelViewSet, PoemViewSet, CustomTokenObtainPairView,PostListCreateView 
 
 # Create a router and register our viewset with it.
 router = DefaultRouter()
@@ -29,11 +29,13 @@ router.register(r'nobel', NobelViewSet)
 router.register(r'poem', PoemViewSet)
 
 
+
 # The API URLs are now determined automatically by the router.
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
     path('api/token/', CustomTokenObtainPairView.as_view(), name='token_obtain_pair'),
-    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh')
+    path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
+    path('posts/', PostListCreateView.as_view(), name='post-list-create'),
 ]
 
