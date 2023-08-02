@@ -18,7 +18,7 @@ class  PostListCreateView(generics.ListCreateAPIView):
     # permission_classes = [IsAuthenticated]
     filter_backends = [DjangoFilterBackend]
     filterset_fields = ['title']
-    
+
 class BookViewSet(viewsets.ModelViewSet):
     queryset = Book.objects.all()
     serializer_class = BookSerializer
